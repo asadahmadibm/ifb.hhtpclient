@@ -1,0 +1,6 @@
+@ifb.httpclient.Webapi_HostAddress = http://localhost:5181
+
+GET {{ifb.httpclient.Webapi_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###

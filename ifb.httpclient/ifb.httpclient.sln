@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ifb.httpclient", "ifb.httpc
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ifb.httpclient.test", "ifb.httpclient.test\ifb.httpclient.test.csproj", "{40BB034B-D66A-467F-81E5-1D5779AE8218}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ifb.httpclient.Webapi", "ifb.httpclient.Webapi\ifb.httpclient.Webapi.csproj", "{C27BD4EE-BF37-49D1-9C61-772D98144EFE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{40BB034B-D66A-467F-81E5-1D5779AE8218}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{40BB034B-D66A-467F-81E5-1D5779AE8218}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{40BB034B-D66A-467F-81E5-1D5779AE8218}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C27BD4EE-BF37-49D1-9C61-772D98144EFE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C27BD4EE-BF37-49D1-9C61-772D98144EFE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C27BD4EE-BF37-49D1-9C61-772D98144EFE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C27BD4EE-BF37-49D1-9C61-772D98144EFE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
