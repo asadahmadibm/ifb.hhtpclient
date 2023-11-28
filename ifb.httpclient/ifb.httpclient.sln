@@ -5,6 +5,8 @@ VisualStudioVersion = 17.8.34316.72
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ifb.httpclient", "ifb.httpclient\ifb.httpclient.csproj", "{BAC1C179-4FDF-48F8-B529-6AD4354A6E7A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ifb.httpclient.test", "ifb.httpclient.test\ifb.httpclient.test.csproj", "{40BB034B-D66A-467F-81E5-1D5779AE8218}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{BAC1C179-4FDF-48F8-B529-6AD4354A6E7A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{BAC1C179-4FDF-48F8-B529-6AD4354A6E7A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BAC1C179-4FDF-48F8-B529-6AD4354A6E7A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{40BB034B-D66A-467F-81E5-1D5779AE8218}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{40BB034B-D66A-467F-81E5-1D5779AE8218}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{40BB034B-D66A-467F-81E5-1D5779AE8218}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{40BB034B-D66A-467F-81E5-1D5779AE8218}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
