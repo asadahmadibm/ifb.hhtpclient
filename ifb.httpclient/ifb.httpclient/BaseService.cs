@@ -76,7 +76,7 @@ namespace ifb.httpclient
                 var StatusCodes = new Dictionary<HttpStatusCode, string>(){
                     {HttpStatusCode.NonAuthoritativeInformation, "Error Code 203. Sent Data is invalid"},
                     {HttpStatusCode.Unauthorized, "Error Code 401. Authorization denied."},
-                    {HttpStatusCode.NotFound, "Error Code 404.Requested resource does not exist."},
+                    {HttpStatusCode.NotFound, "Error Code 404.Requested resource does not exist."}};
 
 
                 if (StatusCodes.ContainsKey(response.StatusCode))
