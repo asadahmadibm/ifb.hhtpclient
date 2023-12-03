@@ -5,6 +5,7 @@ using System.Text;
 using Newtonsoft.Json;
 using Polly;
 using Polly.Extensions.Http;
+using Polly.Timeout;
 
 namespace ifb.httpclient
 {
@@ -73,27 +74,39 @@ namespace ifb.httpclient
                 }
                 var context = new Polly.Context();
                 //var context = response.RequestMessage?.GetPolicyExecutionContext();
-                //var policy = HttpPolicyExtensions
-                //  .HandleTransientHttpError() // HttpRequestException, 5XX and 408
-                //                              //.CircuitBreakerAsync(handledEventsAllowedBeforeBreaking: 3,
-                //                              //      durationOfBreak: TimeSpan.FromSeconds(30)
-                //                              //  )
-                //  .OrResult(response => (int)response.StatusCode == 429) // RetryAfter
+                var policy = HttpPolicyExtensions
+                  .HandleTransientHttpError() // HttpRequestException, 5XX and 408
+                                              //.CircuitBreakerAsync(handledEventsAllowedBeforeBreaking: 3,
+                                              //      durationOfBreak: TimeSpan.FromSeconds(30)
+                                              //  )
+                  .OrResult(response => (int)response.StatusCode == 429) // RetryAfter
 
-                //  .WaitAndRetryAsync(new[]
-                //        {
-                //                            TimeSpan.FromSeconds(1),
-                //                            TimeSpan.FromSeconds(5),
-                //                            TimeSpan.FromSeconds(10)
-                //        });
+                  .WaitAndRetryAsync(new[]
+                        {
+                                            TimeSpan.FromSeconds(1),
+                                            TimeSpan.FromSeconds(5),
+                                            TimeSpan.FromSeconds(10)
+                        });
+
+                var retryPolicy = HttpPolicyExtensions
+                .HandleTransientHttpError()
+                .Or<TimeoutRejectedException>() // thrown by Polly's TimeoutPolicy if the inner call times out
+                .WaitAndRetryAsync(new[]
+                    {
+                        TimeSpan.FromSeconds(1),
+                        TimeSpan.FromSeconds(5),
+                        TimeSpan.FromSeconds(10)
+                    });
+
+                var timeoutPolicy = Policy.TimeoutAsync<HttpResponseMessage>(10); // Timeout for an individual try
                 //context["MyCustomData"] = foo;
                 request.SetPolicyExecutionContext(context);
                 var response =
                     await HttpClient.SendAsync(request);
 
+                
 
 
-  
                 var StatusCodes = new Dictionary<HttpStatusCode, string>(){
                     {HttpStatusCode.NonAuthoritativeInformation, "Error Code 203. Sent Data is invalid"},
                     {HttpStatusCode.Unauthorized, "Error Code 401. Authorization denied."},
