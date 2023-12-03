@@ -73,20 +73,15 @@ namespace ifb.httpclient
                 var response =
                     await HttpClient.SendAsync(request);
 
-                if (response.StatusCode == HttpStatusCode.NonAuthoritativeInformation)
-                {
-                    throw (new System.Exception("Error Code 203. Sent Data is invalid"));
-                }
+                var StatusCodes = new Dictionary<HttpStatusCode, string>(){
+                    {HttpStatusCode.NonAuthoritativeInformation, "Error Code 203. Sent Data is invalid"},
+                    {HttpStatusCode.Unauthorized, "Error Code 401. Authorization denied."},
+                    {HttpStatusCode.NotFound, "Error Code 404.Requested resource does not exist."},
 
-                // auto logout on 401 response
-                if (response.StatusCode == HttpStatusCode.Unauthorized)
-                {
-                    throw (new System.Exception("Error Code 401. Authorization denied."));
-                }
 
-                if (response.StatusCode == HttpStatusCode.NotFound)
+                if (StatusCodes.ContainsKey(response.StatusCode))
                 {
-                    throw (new System.Exception("Error Code 404.Requested resource does not exist."));
+                    throw new Exception(StatusCodes[response.StatusCode]);
                 }
 
                 if (response.StatusCode == HttpStatusCode.BadRequest)
